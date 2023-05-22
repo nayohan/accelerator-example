@@ -1,0 +1,17 @@
+accelerate launch run_mlm.py \
+    --dataset_name yelp_polarity \
+    --model_name_or_path roberta-base \
+    --per_device_train_batch_size 32 \
+    --per_device_eval_batch_size 32 \
+    --learning_rate 5e-5 \
+    --weight_decay 0.1 \
+    --num_train_epochs 30 \
+    --gradient_accumulation_steps 1 \
+    --lr_scheduler_type "linear" \
+    --output_dir "./result_mlm" \
+    --seed 0 \
+    --max_seq_length 128 \
+    --preprocessing_num_workers 96 \
+    --checkpointing_steps "epoch" \
+    --report_to "wandb" \
+    --with_tracking

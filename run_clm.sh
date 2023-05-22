@@ -1,0 +1,17 @@
+accelerate launch run_clm.py \
+    --dataset_name yelp_polarity \
+    --model_name_or_path gpt2 \
+    --per_device_train_batch_size 8 \
+    --per_device_eval_batch_size 8 \
+    --learning_rate 5e-5 \
+    --weight_decay 0.1 \
+    --num_train_epochs 3 \
+    --gradient_accumulation_steps 1 \
+    --lr_scheduler_type "linear" \
+    --output_dir "./result_clm" \
+    --seed 0 \
+    --block_size 1024 \
+    --preprocessing_num_workers 96 \
+    --checkpointing_steps "epoch" \
+    --report_to "wandb" \
+    --with_tracking
